@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>UNST - Progress</title>
+        <link rel="stylesheet" href="./IEEE_Software_Req_Spec/style.css">
+        <link rel="icon" href="logo5.png" icon="image/png">
+    </head>
+</html>
+<body>
+    <header>
+        <h1>UNST - Progress Report</h1>
+    </header>
+    <div role="contentinfo">
+        <ol role="directory">
+            <li>
+                <a href="#introduction">
+                    <span>1.</span>
+                    Introduction
+                </a>
+                <ol role = "directory">
+                    <li>
+                        <a href="#presentation">
+                            <span>1.1.</span>
+                            Presentation
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#architecture">
+                            <span>1.2.</span>
+                            Architecture
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#technologies">
+                            <span>1.3.</span>
+                            Technologies
+                        </a>
+                    </li>
+
+                </ol>
+            </li>
+            <li>
+                <a href="#evolution">
+                    <span>2.</span>
+                    Evolution
+                </a>
+                <ol>
+                    <li>
+                        <a href="#genesis">
+                            <span>2.1.</span>
+                            Genesis
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#frontend">
+                            <span>2.2.</span>
+                            UI Design 
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#backend">
+                            <span>2.3.</span>
+                            Server and Router
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#database">
+                            <span>2.4.</span>
+                            Database
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#login/register">
+                            <span>2.5.</span>
+                            Login, Register and Security
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#clouds">
+                            <span>2.6.</span>
+                            Cloud APIs
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#config">
+                            <span>2.7.</span>
+                            Config and Statistics Pages
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#download/upload">
+                            <span>2.8.</span>
+                            File Download and Upload
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#mainpage">
+                            <span>2.9.</span>
+                            Main Page
+                        </a>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <a href="#github">
+                    <span>3.</span>
+                    Code Management
+                </a>
+            </li>
+            <li>
+                <a href="#bibliography">
+                    <span>4.</span>
+                    Bibliography
+                </a>
+
+            </li>
+        </ol>
+    </div>
+    <section role="doc-introduction" id="introduction">
+        <h2>
+            <span>1. </span>
+            Introduction
+        </h2>
+        <p>
+            Nowadays, our digital storage focus has shifted from local storage, like HDD's, SSD's, USB Flash Storage, CD's, DVD's and so on, to cloud storage solutions. 
+            Why? Because it is much easier to share, our data from the cloud is accessible from anywhere with internet connection and benefits go on. But what if we need to store large files, with sizes
+            that take up considerable space from our free storage plans provided by Google Drive, DropBox or OneDrive? Well, our application aims to combine those 3 all together, by splitting
+            large files into smaller chunks and distributing them across the mentioned cloud services.
+        </p>
+        <section id="presentation">
+            <h3>
+                <span>1.1.</span>
+                Presentation
+            </h3>
+            <p>
+                Our main goal was take one of the main advantages of cloud - shared storage, and take it a step further: sharing files between different cloud services, in order to save space.
+                This is what drove us to establish these core functionalities of our app:
+                <ul>
+                    <li>
+                        <b>Cloud Storage Linking</b> - the user can link his accounts of cloud storage solutions, namely Google Drive, DropBox and OneDrive;
+                    </li>
+                    <li>
+                        <b>File Upload</b> - files are first uploaded to our server;
+                    </li>
+                    <li>
+                        <b>File Splitting</b> - after they are uploaded to our servers, files are split in smaller parts we like to call "shards"; even though each file is split, the user can still see his/her uploaded files as whole;
+                    </li>
+                    <li>
+                        <b>Compression</b> - each shard is then compressed;
+                    </li>
+                    <li>
+                        <b>Cloud Upload</b> - each shard is uploaded to one cloud storage service;
+                    </li>
+                    <li>
+                        <b>Download</b> - for each file, the shards are downloaded from cloud and decompressed; the file is then merged back together in our server and then it is downloaded to the client side;
+                    </li>
+                </ul>
+                Apart from those, there are still some secondary but still essential functionalities, like:
+                <ul>
+                    <li>
+                        <b>Register</b>;
+                    </li>
+                    <li>
+                        <b>Login</b>;
+                    </li>
+                    <li>
+                        <b>Password Reset</b> - "Forgot your password?";
+                    </li>
+                    <li>
+                        <b>User Account Settings</b> - change user account information such as email, username or password;
+                    </li>
+                    <li>
+                        <b>Cloud Settings</b> - change settings related to cloud storage, such as allocated size for each cloud service, file splitting method or more;
+                    </li>
+                    <li>
+                        <b>Cloud Statistics</b> - see generated cloud related statistics, such as used space for each cloud, file distribution and so on;
+                    </li>
+                    
+                </ul>
+            </p>
+        </section>
+        <section id="architecture">
+            <h3>
+                <span>1.2</span>
+                Architecture
+            </h3>
+            Our app relies on a (micro)service architecture, described in the diagram below:
+            <p>
+                <img class="diagram" id="app_diagram" src="./Media/UNST_1.svg" alt="">
+            </p>
+        </section>
+        <section id="technologies">
+            <h3>
+                <span>1.3.</span>
+                Technologies
+            </h3>
+            <p>
+                For developing the User Interface for our app, we used:
+                <ul>
+                    <li>
+                        <b>HTML5</b>;
+                    </li>
+                    <li>
+                        <b>CSS</b>;
+                    </li>
+                    <li>
+                        <b>JavaScript</b>.
+                    </li>
+                </ul>
+                As for the back-end we used:
+                <ul>
+                    <li>
+                        <b>NodeJS</b>;
+                    </li>
+                    <li>
+                        <b>OAuth 2.0</b> - for cloud service authentication;
+                    </li>
+                    <li>
+                        <b>JWT</b>;
+                    </li>
+                    <li>
+                        NodeJS built-in <b>crypto</b> module - for password encryption using <b>SHA256</b>;
+                    </li>
+                    <li>
+                        <b>MySQL</b>;
+                    </li>
+                    <li>
+                        <b>nodemon</b> - for fast and seamless server restarts;
+                    </li>
+                </ul>
+            </p>
+        </section>
+    </section>
+    <section id="Evolution">
+        <h2>
+            <span>2.</span>
+            Evolution
+        </h2>
+        <section id="genesis">
+            <h3>
+                <span>2.1.</span>
+                Genesis
+            </h3>
+            <p>
+                This "genesis" section is added as a reminder for us of how our UI design has evolved. We knew from start what pages we need to have and that hasn't changed, but we can't say the same for the actual page design.
+                Below you can see how some of our first pages and mocks looked like:
+                <p>
+                    <img id="green-page" src="./Media/green page.png" alt="">
+                    <img id="green_login" src="./Media/green_login.png" alt="">
+                    <img id="stats_mock" src="./Media/stats_mock_1.png" alt="">
+                    
+                </p>
+                <p>
+                    <img id="purple_page" src="./Media/purple_page_1.png" alt="">
+                </p>
+                <p>
+                    As you can see, much has changed in our app in terms of UI design and for some pages there were literally several iterations until the final form was reached.
+                </p>
+            </p>
+        </section>
+        <section id="frontend">
+            <h3>
+                <span>2.2.</span>
+                UI Design
+            </h3>
+            <p>
+                When we were designing the UI, we intended to make our app available for mobile use as well. This is why, all of our pages are responsive. As for the colors, we went with a simple, consistent, modern-looking color palette.
+            </p>
+            <p>
+                <img class="landscape" id="main_page" src="./Media/main_page.png" alt="">
+                <img class="vertical" id="main_page_mobile" src="./Media/main_page_mobile.png" alt="">
+            </p>
+            <p>
+                <img class="vertical" id="login_page_mobile" src="./Media/login_page_mobile.png" alt="">
+                <img class="landscape" id="login_page" src="./Media/login.png" alt="">
+                
+            </p>
+            <p>
+                <img class="landscape" id="cloud_page" src="./Media/cloud_page.png" alt="">
+                <img class="vertical" id="cloud_page_mobile" src="./Media/cloud_page_mobile.png" alt="">
+            </p>
+            <p>
+                We also wanted to implement interactive animations, such as:
+            </p>
+            <p>
+                <img class="gif" id="main_page_gif" src="./Media/main_page .gif" alt="">
+            </p>
+            <p>
+                <img class="gif" id="login_gif" src="./Media/login.gif" alt="">
+            </p>
+        </section>
+        <section id="backend">
+            <h3>
+                <span>2.3.</span>
+                Server and Router
+            </h3>
+            <p>
+                
+            </p>
+            <p>
+                Our first step when we started work on the backend was to make the server such that it will be easy to modify and expand during the development process. That is why we made the router, in order to have a modularized and clean dispatching of requests to our backend. We initially planned to also include middleware, but it ended up to complicated too develop. Currently the router is able to serve static files, handle API routes for any HTTP method, handle route parameters and expose them to the request object inside the handlers, and use asynchronous handlers. The general interface of the router was inspired by the way express.js handles it's routes.
+            </p>
+            <p>
+                The server is a collection of endpoints, in which we use the router to handle HTTP requests.
+            </p>
+            <p>
+                <b>GET</b> commands:
+                <ul>
+                    <li>
+                        / - redirects to homepage
+                    </li>
+                    <li>
+                        /home/index/all - retrieves all the files and sends them to the browser form them to appear on the main page;
+                    </li>
+                    <li>
+                        /home/index/:filename - retrieves a specific file for it to be downloaded by the user;
+                    </li>
+                    <li>
+                        /config/config_cloud - request sent by the client when he accesses the cloud setting page, in order to retrieve all the cloud services the user linked;
+                    </li>
+
+                </ul>
+                <b>POST</b> commands:
+                <ul>
+                    <li>
+                        /register - calls for method <i>registerUser</i> in User Handler (called UserManager), which in turn calls for methods in Database Handler (DBHandler) in order to store the user in the database; returns appropriate messages for successful register, user already in database, username/email already taken;
+    
+                    </li>
+                    <li>
+                        /login - calls for method <i>loginUser</i> in User Handler (called userManager) in order to authenticate the user, using data from the database (also through DBHandler); after successful authentication, a <b>JWT</b> is generated with a secret key stored in a .env file for further authorization;
+                    </li>
+                    <li>
+                        /home/index/upload - dedicated to file uploading, using the File Handler (called FileManager); 
+                    </li>
+                    <li>
+                        /config/config_cloud - request sent by the client when he links a cloud service account;
+                    </li>
+                </ul>
+                <b>DELETE</b> commands:
+                <ul>
+                    <li>
+                        /config/config_cloud - requests sent by the client when he disconnects a cloud service;
+                    </li>
+                </ul>
+            </p>
+        </section>
+        <section id="database">
+            <h3>
+                <span>2.4.</span>
+                Database
+            </h3>
+            <p>
+                We chose to user a MySQL database for storing data regarding the user, files and cloud access tokens:
+            </p>
+            <p>
+                <img class="diagram" id="database_diagram" src="./Media/database_diagram.png" alt="">
+            </p>
+            <p>
+                <br>
+                Tables:
+                <ul>
+                    <li>
+                        <b>user</b>
+                        <ul>
+                            <li>
+                                used for storing email, username and the encrypted password; 
+                            </li>
+                            <li>
+                                primary key: <b>iduser</b> - which is also autogenerated;
+                            </li>
+                            <li>
+                                email and username are unique;
+                            </li>
+                        </ul>
+
+                    </li>
+                    <br>
+                    <li>
+                        <b>google/dropbox/onedrive_session_tokens</b>
+                        <ul>
+                            <li>
+                                used for storing, for each user, session tokens, as well as refresh tokens;
+                            </li>
+                        </ul>
+                    </li>
+                    <br>
+                    <li>
+                        <b>file</b>
+                        <ul>
+                            <li>
+                                used for storing data regarding the whole files;
+                            </li>
+                            <li>
+                                each files is linked to the user that uploaded it;
+                            </li>
+                            <li>
+                                attribute <b>scope</b> refers to its parent directory;
+                            </li>
+                        </ul>
+                    </li>
+                    <br>
+                    <li>
+                        <b>file_shards</b>
+                        <ul>
+                            <li>
+                                used for storing data regarding file fragments;
+                            </li>
+                            <li>
+                                each shard is linked to the file it is being a part of, and to the user who uploaded the file;
+                            </li>
+                            <li>
+                                each shard has a name and a location, i.e. in which cloud service it is uploaded;
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </p>
+        </section>
+        <section id="login/register">
+            <h3>
+                <span>2.5.</span>
+                Login, Register and Security
+            </h3>
+            <p>
+                In order to access the app, the user must have an account that is stored in the database. For that to happen, he must register first. In the register form, a user must specify the following information:
+                <ul>
+                    <li>
+                        email address - it must have a valid email address format and must unique in the database;
+                    </li>
+                    <li>
+                        username - may contain letters, digits and '_';
+                    </li>
+                    <li>
+                        password - at least 5 characters long;
+                    </li>
+                </ul>
+                    The server, when it receives a register request, calls for method <i>registerUser</i> from the User Handler. The User Handler first verifies if the user is already registered, or if its username or email is already taken, through the DB Handler. If not, the user is then inserted in the database. Appropriate messages are sent back all the way to the client, in case of user already existing in the database, or if the username/email is already taken;
+            </p>
+            <p>
+                After registering, the user can login in the app by providing
+                <ul>
+                    <li>
+                        username or email - both have to have appropriate formats (the ones mentioned above);
+                    </li>
+                    <li>
+                        password;
+                    </li>
+                </ul>
+                The login request is sent to the server, which calls for method loginUser in the User Handler. Upon successful authentication by searching the user in the database, a <b>JWT</b> is generated for the client and is set in a <i>HttpOnly cookie</i>;
+            </p>
+            <p>
+                After that, the <b>JWT</b> is required for authorization for every request made to the server. If the <b>JWT</b> is altered and a request is sent to the server, authorization fails and the user is redirected back to the login page.
+            </p>
+        
+        </section>
+        <section id="clouds">
+            <h3>
+                <span>2.6.</span>
+                Cloud APIs
+            </h3>
+            <p>
+                We started the integration of OneDrive, Dropbox and Microsoft Office by setting up the OAuth 2.0 flow for all three drives. We have decided to store the session token and authentication token for future reuse in the database.
+                Initially we have planned to create a Cloud Manager interface to encapsulate all three drives, but because each of them comes with their own requirements, we have decided to create a controller for each microservice.
+            </p>
+            <p>
+                After the OAuth was implemented, we started looking at methods of transferring data from the server to the drives and back. Because in theory the files should be huge, we are using resumable requests that allow us to restart a request if a transfer fails midway (Google Drive, Dropbox).
+                For OneDrive we are creating a separate session for both upload and download.
+    
+            </p>
+        </section>
+        <section id="config">
+            <h3>
+                <span>2.7.</span>
+                Config and Statistics Pages
+            </h3>
+            <p>
+                We knew from the start that we needed some settings pages. The most important one is the one dedicated to cloud services. There, you can link and unlink your accounts from the three mentioned cloud storage solutions:
+                <ul>
+                    <li>
+                        Google Drive;
+                    </li>
+                    <li>
+                        DropBox;
+                    </li>
+                    <li>
+                        Microsoft OneDrive;
+                    </li>
+                </ul>
+                This is done by implementing toggle buttons for Connect/Disconnect. How? Whenever the user accesses the config page, a GET request is made to the server to retrieve the status of all three. Based on the response, the buttons are generated dynamically through <b>AJAX</b> calls, thus changing the content of the page without reloading it.
+
+            </p>
+        </section>
+        <section id="download/upload">
+            <h3>
+                <span>2.8.</span>
+                File Download and Upload
+            </h3>
+            <p>
+                The full process of uploading and downloading a file started with simple requests between the client and the server making sure that all the file formats transferred were not altered on the way and storing them locally on the server side.
+                After making sure that this process worked fine we did some research on how to transfer these files from the server to all drives, without altering their content. We also took into considerations that the purpose of this project was sending huge files so all of the
+                transfers from the server to the clients are resumable. When the transfer between the server to clients OR drives were working properly we started working on the splitter module that creates the file shards that are to be uploaded to the drives and recomposes those shards back when files are requested for download.
+            </p>
+        </section>
+        <section id="mainpage">
+            <h3>
+                <span>2.9.</span>
+                Main Page
+            </h3>
+            <p>
+                The main page is where the most important events take place. From here you can see all the uploaded files, upload new files, download files, access all the other pages, see a file system tree and see details related to each file.
+                In parallel with the transfer process we started learning about AJAX, DOM and how simple it is to reduce that ~2000 lines html down to only ~200 and generate all the elements based on JSON answers from the server. This technique is currently 
+                used when displaying the files to the user. This allows us to dynamically load elements to the users without refreshing the page, just like we did with the cloud config page.
+            </p>
+        </section>
+    </section>
+    <section id="github"> 
+        <h2>
+            <span>3.</span>
+            Code Management
+        </h2>
+        <p>
+            For code management we used GitHub, with the idea that, for each new functionality or fix, we created a dedicated branch. The link to our GitHub Repo: <a href="https://github.com/robertadriang/Tehnologii_Web">UNST</a>.
+        </p>
+    </section>
+    <section id="bibliography">
+        <h2>
+            <span>4.</span>
+            Bibliography
+        </h2>
+        <p>
+            <ul>
+                <li>
+                    <a href="https://profs.info.uaic.ro/~busaco/teach/courses/web/">Web Technologies Course Page</a>
+                </li>
+                <li>
+                    <a href="https://developer.mozilla.org/en-US/">MDN Web Docs</a>
+                </li>
+                <li>
+                    <a href="https://jwt.io/">JWT</a>
+                </li>
+                <li>
+                    <a href="https://validator.w3.org/">HTML Validator</a>
+                </li>
+                <li>
+                    <a href="https://jigsaw.w3.org/css-validator/">CSS Validator</a>
+                </li>
+                <li>
+                    <a href="https://developers.google.com/drive">Google Drive API</a>
+                </li>
+                <li>
+                    <a href="https://www.dropbox.com/developers">Dropbox API</a>
+                </li>
+                <li>
+                    <a href="https://github.com/OneDrive/onedrive-api-docs">OneDrive API</a>
+                </li>
+                <li>
+                    <a href="https://coolors.co/">Coolors - Color Palette Generator</a>
+                </li>
+                <li>
+                    <a href="https://undraw.co/">unDraw - Open Source SVG Illustrations</a>
+                </li>
+                <li>
+                    <a href="https://www.mysql.com/">MySQL</a>
+                </li>
+                <li>
+                    <a href="https://opensource.org/licenses">Open Source Initiative</a>
+                </li>
+                <li>
+                    <a href="https://w3c.github.io/scholarly-html/">Scholarly</a>
+                </li>
+            </ul>
+        </p>
+    </section>
+</body>
